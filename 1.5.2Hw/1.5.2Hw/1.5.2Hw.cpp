@@ -2,48 +2,16 @@
 
 class Figure {
 public:
-   Figure(int a, int b, int c, int d, int A, int B, int C, int D) {
-      this->a = a;
-      this->b = b;
-      this->c = c;
-      this->d = d;
-      this->A = A;
-      this->B = B;
-      this->C = C;
-      this->D = D;
-   }
-
-   int get_a() { return a;}
-   int get_b() { return b;}
-   int get_c() { return c;}
-   int get_d() { return d;}
-
-   int get_A() { return A;}
-   int get_B() { return B;}
-   int get_C() { return C;}
-   int get_D() { return D;}
-
-   virtual void print() {
-      std::cout << "Фигура: " << side << std::endl;
+   virtual void print_info() {
+      std::cout << "Фигура: " << std::endl;
    }
 
 protected:
-   int side = 0;
-
-   int a;
-   int b;
-   int c;
-   int d = 0;
-
-   int A;
-   int B;
-   int C;
-   int D = 0;
 };
 
 class Triangle : public Figure {
 public:
-   Triangle(int a, int b, int c, int A, int B, int C) : Figure(a,b,c,0,A,B,C,0) {
+   Triangle(int a, int b, int c, int A, int B, int C) : Figure() {
       this->a = a;
       this->b = b;
       this->c = c;
@@ -52,14 +20,24 @@ public:
       this->C = C;
    }
 
-   void print() override {
+   void print_info() override {
       std::cout << "Треугольник: " << std::endl;
+      std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+      std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << std::endl;
    }
+
+protected:
+   int a;
+   int b;
+   int c;
+   int A;
+   int B;
+   int C;
 };
 
 class Quadrangle : public Figure {
 public:
-   Quadrangle(int a, int b, int c, int d, int A, int B, int C, int D) : Figure(a,b,c,d,A,B,C,D){
+   Quadrangle(int a, int b, int c, int d, int A, int B, int C, int D) : Figure(){
       this->a = a;
       this->b = b;
       this->c = c;
@@ -70,9 +48,21 @@ public:
       this->D = D;
    }
 
-   void print() override {
+   void print_info() override {
       std::cout << "Четырехугольник: " << std::endl;
+      std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+      std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
    }
+
+protected:
+   int a;
+   int b;
+   int c;
+   int d;
+   int A;
+   int B;
+   int C;
+   int D;
 };
 
 class RightTriangle : public Triangle {
@@ -86,8 +76,10 @@ public:
       this->C = 90;
    }
 
-   void print() override {
-      std::cout << "Прямой треугольник: " << std::endl;
+   void print_info() override {
+      std::cout << "Прямоугольный треугольник: " << std::endl;
+      std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+      std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << std::endl;
    }
 };
 
@@ -101,9 +93,10 @@ public:
       this->B = 180 - A * 2;
       this->C = A;
    }
-
-   void print() override {
+   void print_info() override {
       std::cout << "Равнобедренный треугольник: " << std::endl;
+      std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+      std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << std::endl;
    }
 };
 
@@ -117,9 +110,10 @@ public:
       this->B = 60;
       this->C = 60;
    }
-
-   void print() override {
+   void print_info() override {
       std::cout << "Равносторонний треугольник: " << std::endl;
+      std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+      std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << std::endl;
    }
 };
 
@@ -135,9 +129,10 @@ public:
       this->C = 90;
       this->D = 90;
    }
-
-   void print() override {
+   void print_info() override {
       std::cout << "Прямоугольник: " << std::endl;
+      std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+      std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
    }
 };
 
@@ -153,9 +148,10 @@ public:
       this->C = 90;
       this->D = 90;
    }
-
-   void print() override {
+   void print_info() override {
       std::cout << "Квадрат: " << std::endl;
+      std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+      std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
    }
 };
 
@@ -171,9 +167,10 @@ public:
       this->C = A;
       this->D = B;
    }
-
-   void print() override {
+   void print_info() override {
       std::cout << "Параллелограмм: " << std::endl;
+      std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+      std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
    }
 };
 
@@ -189,36 +186,12 @@ public:
       this->C = A;
       this->D = B;
    }
-
-   void print() override {
+   void print_info() override {
       std::cout << "Ромб: " << std::endl;
+      std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+      std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
    }
 };
-
-void print_info(Figure *figure) {
-   int a = figure->get_a();
-   int b = figure->get_b();
-   int c = figure->get_c();
-   int d = figure->get_d();
-
-   int A = figure->get_A();
-   int B = figure->get_B();
-   int C = figure->get_C();
-   int D = figure->get_D();
-
-   figure->print();
-   std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c;
-   if(d != 0)
-      std::cout << " d=" << d;
-   std::cout << std::endl;
-
-   std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C;
-   if(d != 0)
-      std::cout << " D=" << D;
-   std::cout << std::endl;
-
-
-}
 
 int main() {
    setlocale(LC_ALL, "Russian");
@@ -234,16 +207,15 @@ int main() {
    Para para(20, 30, 30, 40);
    Rhomb rhomb(30, 30, 40);
 
-   print_info(&triangle);
-   print_info(&rightTriangle);
-   print_info(&issoTriangle);
-   print_info(&equTriangle);
-
-   print_info(&quadrangle);
-   print_info(&rectangle);
-   print_info(&square);
-   print_info(&para);
-   print_info(&rhomb);
+   triangle.print_info();
+   rightTriangle.print_info();
+   issoTriangle.print_info();
+   equTriangle.print_info();
+   quadrangle.print_info();
+   rectangle.print_info();
+   square.print_info();
+   para.print_info();
+   rhomb.print_info();
 
    return 0;
 }
